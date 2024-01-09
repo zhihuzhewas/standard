@@ -166,6 +166,7 @@ class Exp_Main(Exp_Basic):
 
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Vali Loss: {3:.7f} Test Loss: {4:.7f}".format(
                 epoch + 1, train_steps, train_loss, vali_loss, test_loss))
+            
             writer.add_scalar("train_loss", train_loss, global_step=epoch + 1)
             writer.add_scalar("vali_loss", vali_loss, global_step=epoch + 1)
             writer.add_scalar("test_loss", test_loss, global_step=epoch + 1)
@@ -230,28 +231,28 @@ class Exp_Main(Exp_Basic):
                     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
                     pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
                     visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
-                    # plt.figure()
-                    # plt.plot(range(len(input[0,:,0])), input[0,:,0], label='HUFL')
-                    # plt.plot(range(len(input[0,:,1])), input[0,:,1], label='HULL')
-                    # plt.plot(range(len(input[0,:,2])), input[0,:,2], label='MUFL')
-                    # plt.plot(range(len(input[0,:,3])), input[0,:,3], label='MULL')
-                    # plt.plot(range(len(input[0,:,4])), input[0,:,4], label='LUFL')
-                    # plt.plot(range(len(input[0,:,5])), input[0,:,5], label='LULL')
-                    # plt.plot(range(len(input[0,:,6])), input[0,:,6], label='OT')
-                    # plt.legend(loc="upper right")  
-                    # plt.savefig(os.path.join(folder_path, str(i) + '.png'))
-                    # for layer in range(len(attns)):
-                    #     attention = attns[layer][0]
-                    #     for head in range(len(attention)):
-                    #         data = attention[head].detach().cpu().numpy()
-                    #         plt.figure()
-                    #         plt.imshow(data, vmin = np.min(data), vmax=np.max(data))
-                    #         plt.colorbar()
-                    #         plt.xlabel('Key')
-                    #         plt.ylabel('Ouery')
-                    #         plt.title(f"{layer}-{head} attention weight visualize")
-                    #         plt.savefig(os.path.join(folder_path, f'{i}-{layer}-{head}.png'), dpi=600)
-                    #         plt.close()
+                    plt.figure()
+                    plt.plot(range(len(input[0,:,0])), input[0,:,0], label='HUFL')
+                    plt.plot(range(len(input[0,:,1])), input[0,:,1], label='HULL')
+                    plt.plot(range(len(input[0,:,2])), input[0,:,2], label='MUFL')
+                    plt.plot(range(len(input[0,:,3])), input[0,:,3], label='MULL')
+                    plt.plot(range(len(input[0,:,4])), input[0,:,4], label='LUFL')
+                    plt.plot(range(len(input[0,:,5])), input[0,:,5], label='LULL')
+                    plt.plot(range(len(input[0,:,6])), input[0,:,6], label='OT')
+                    plt.legend(loc="upper right")  
+                    plt.savefig(os.path.join(folder_path, str(i) + '.png'))
+                    for layer in range(len(attns)):
+                        attention = attns[layer][0]
+                        for head in range(len(attention)):
+                            data = attention[head].detach().cpu().numpy()
+                            plt.figure()
+                            plt.imshow(data, vmin = np.min(data), vmax=np.max(data))
+                            plt.colorbar()
+                            plt.xlabel('Key')
+                            plt.ylabel('Ouery')
+                            plt.title(f"{layer}-{head} attention weight visualize")
+                            plt.savefig(os.path.join(folder_path, f'{i}-{layer}-{head}.png'), dpi=600)
+                            plt.close()
 
 
 
