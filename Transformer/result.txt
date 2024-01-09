@@ -1,0 +1,6 @@
+ETTh1_96_720_Transformer_ETTh1_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_test_0  
+mse:0.81192946434021, mae:0.6636443138122559
+
+ETTh1_96_720_Transformer_ETTh1_ftM_sl96_ll48_pl720_dm512_nh8_el2_dl1_df2048_fc3_ebtimeF_dtTrue_test_0  
+mse:0.8119294047355652, mae:0.6636441349983215
+
